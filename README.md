@@ -7,7 +7,6 @@
 - fix 1
 
 ## Release 0.3.0
+- fix 1
 
-
-Creating a conflict
 # Release 0.4.0
