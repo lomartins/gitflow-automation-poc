@@ -11,3 +11,4 @@
 
 # Release 0.4.0
 - fix 1
+- fix 2
