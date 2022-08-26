@@ -15,3 +15,4 @@
 - fix 3
 - fix 4
 - fix 5
+- fix 6
