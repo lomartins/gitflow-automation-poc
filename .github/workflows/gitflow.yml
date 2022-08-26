@@ -12,7 +12,7 @@ jobs:
     name: Gitflow
     runs-on: ubuntu-latest
     steps:
-    - uses: lucaomartins/gitflow-action@release
+    - uses: stone-payments/pos-android-gitflow-action@release
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }} # The `GITHUB_TOKEN` secret.
         release-regex: ^release/(.*) # The `release` branch regex.

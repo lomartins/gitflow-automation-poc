@@ -19,3 +19,4 @@
 - fix 7
 - fix final - pretencioso?
 - fix final agr vai
+- testando uma parada
