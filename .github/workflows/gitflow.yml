@@ -31,7 +31,7 @@ jobs:
 
       - name: Set output
         id: vars
-        run: echo ::set-output name=short_ref::${GITHUB_REF#refs/story/*/}
+        run: echo ::set-output name=short_ref::${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
 
       - name: Check Output
         run: echo ${{ steps.vars.outputs.short_ref }}
