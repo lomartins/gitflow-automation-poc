@@ -1,15 +1,14 @@
-# Generates tag versioning
 name: Tagging releases
 on:
   pull_request:
     types:
-      - [closed]
+      - closed
 jobs:
   tag_repo:
+    name: Get tag version from branch name and tag the current code snapshot
+    runs-on: ubuntu-latest
     if_merged:
       if: github.event.pull_request.merged == true
-      name: Get tag version from branch name and tag the current code snapshot
-      runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
 
