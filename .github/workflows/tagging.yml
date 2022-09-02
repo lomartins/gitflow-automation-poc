@@ -1,19 +1,24 @@
 name: Tagging
 on:
-  pull_request:
-    types:
-      - closed
+  push:
+    branches:
+      - 'feature/**' #only for testing, in Gitflow it would be the master branch
+
 jobs:
   tag_repo:
     name: Get tag version from branch name and tag the current code snapshot
     runs-on: ubuntu-latest
-    if_merged:
-      if: github.event.pull_request.merged == true
-      steps:
-        - name: Check Output
-          run: echo ${{GITHUB_REF_NAME##*/}}
+    steps:
+      - uses: actions/checkout@v2
 
-        - name: Tag and push current repo code
-          run: |
-            git tag ${{GITHUB_REF_NAME##*/}}
-            git push origin ${{GITHUB_REF_NAME##*/}}
+      - name: Set output
+        id: vars
+        run: echo ::set-output name=tag_version::${GITHUB_REF_NAME##*/}
+
+      - name: Check Output
+        run: echo ${{ steps.vars.outputs.tag_version}}
+
+      - name: Tag and push current repo code
+        run: |
+          git tag ${{ steps.vars.outputs.tag_version}}
+          git push origin ${{steps.vars.outputs.tag_version}}
