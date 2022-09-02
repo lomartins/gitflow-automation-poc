@@ -10,16 +10,10 @@ jobs:
     if_merged:
       if: github.event.pull_request.merged == true
       steps:
-        - uses: actions/checkout@v2
-
-        - name: Set output
-          id: vars
-          run: echo ::set-output name=short_ref::${GITHUB_REF_NAME##*/}
-
         - name: Check Output
-          run: echo ${{ steps.vars.outputs.short_ref}}
+          run: echo ${{GITHUB_REF_NAME##*/}}
 
         - name: Tag and push current repo code
           run: |
-            git tag ${{ steps.vars.outputs.short_ref}}
-            git push origin ${{steps.vars.outputs.short_ref}}
+            git tag ${{GITHUB_REF_NAME##*/}}
+            git push origin ${{GITHUB_REF_NAME##*/}}
