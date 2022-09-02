@@ -24,7 +24,7 @@ jobs:
 
   # Generates tag versioning
   tag_repo:
-    name: Get tag version from branch name
+    name: Get tag version from branch name and tag the current code snapshot
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -34,4 +34,9 @@ jobs:
         run: echo ::set-output name=short_ref::${GITHUB_REF_NAME##*/}
 
       - name: Check Output
-        run: echo ${{ steps.vars.outputs.short_ref }}
+        run: echo ${{ steps.vars.outputs.short_ref}}
+
+      - name: Tag and push current repo code
+        run: |
+          git tag ${{ steps.vars.outputs.short_ref}}
+          git push origin ${{steps.vars.outputs.short_ref}}
